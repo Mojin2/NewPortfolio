@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Kdam+Thmor+Pro&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap");
+
+@font-face {
+  font-family: "Pixel-thick";
+  src: url("./assets/fonts/PixelFont/thick/retro-pixel-thick.ttf");
+}
+@font-face {
+  font-family: "Pixel-cute";
+  src: url("./assets/fonts/PixelFont/cute-prop/retro-pixel-cute-prop.ttf");
+}
+@font-face {
+  font-family: "Pixel-petty";
+  src: url("./assets/fonts/PixelFont/petty-5x5/retro-pixel-petty-5x5.ttf");
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#root {
+  width: 100vw;
+  height: 100vh;
+}
+
+body {
+  margin: 0;
+}
+
+.change {
+  animation: change 1s step-end infinite;
+}
+
+@keyframes change {
+  0% {
+    color: red;
+  }
+  25% {
+    color: green;
+  }
+  50% {
+    color: orange;
+  }
+  75% {
+    color: blue;
+  }
+}
