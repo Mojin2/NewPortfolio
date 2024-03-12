@@ -32,6 +32,7 @@
     "react-items-carousel": "^2.8.0",
     "react-slick": "^0.30.2",
     "react-tooltip": "^5.26.3",
+    "react-type-animation": "^3.2.0",
     "slick-carousel": "^1.8.1",
     "style-loader": "^3.3.4",
     "three": "0.153.0"

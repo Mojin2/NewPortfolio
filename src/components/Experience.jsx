@@ -5,7 +5,6 @@ import { useFrame, useThree } from "@react-three/fiber";
 import { animate, useMotionValue } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { framerMotionConfig } from "../config";
-import { Office } from "./Office";
 import {
   Circle,
   Environment,
@@ -25,16 +24,29 @@ import { BubbleAnimation } from "./BubbleAnimation";
 import { Rock } from "./Rock";
 import { Board } from "./Board";
 import { Shinchang } from "./ShinChang";
+import { Computer } from "./Computer";
+import { LowpolyRoom } from "./LowpolyRoom";
+import { Map } from "./Map";
+import { Mine } from "./Mine";
+import { Totoro } from "./Totoro";
 
 export const Experience = (props) => {
   const { animation } = useControls({
     animation: {
       value: "Typing",
-      options: ["Typing", "Falling", "Standing", "Nervous", "Dancing"],
+      options: [
+        "Typing",
+        "Falling",
+        "Standing",
+        "Nervous",
+        "Dancing",
+        "Sitting",
+        "Landing",
+      ],
     },
   });
   const [section, setSection] = useState(0);
-  const [characterAnimation, setCharacterAnimation] = useState("Typing");
+  const [characterAnimation, setCharacterAnimation] = useState("Standing");
   const data = useScroll();
   const { menuOpened } = props;
   const { viewport } = useThree();
@@ -56,7 +68,9 @@ export const Experience = (props) => {
   useEffect(() => {
     setCharacterAnimation("Falling");
     setTimeout(() => {
-      setCharacterAnimation(section === 0 ? "Typing" : "Standing");
+      setCharacterAnimation(
+        section === 0 ? "Sitting" : section === 3 ? "Dancing" : "Standing"
+      );
     }, 600);
   }, [section]);
   useFrame((state) => {
@@ -80,8 +94,15 @@ export const Experience = (props) => {
   return (
     <>
       <Background section={section} />
-      <ambientLight intensity={0.5} />
-      <directionalLight intensity={0.5} position={[10, 10, 10]} />
+      {/* <ambientLight intensity={1} /> */}
+      {/* <pointLight
+        intensity={1}
+        color="sky"
+        position={[1, 3, 4.5]}
+        distance={5}
+      /> */}
+      <directionalLight intensity={1} position={[0, 0, 0]} />
+      <Environment preset="sunset" />
       {/* character */}
 
       {/* <motion.group
@@ -147,49 +168,54 @@ export const Experience = (props) => {
         }}
         variants={{
           0: {
-            scaleX: 0.75,
-            scaleY: 0.75,
-            scaleZ: 0.75,
-            x: 2.0106066017177984,
-            y: 0.64125,
+            scaleX: 0.3,
+            scaleY: 0.3,
+            scaleZ: 0.3,
+            x: 1.5706066017177984,
+            y: 0.5,
             z: 4.1249553582816474,
             rotateX: Math.PI / 2,
             rotateY: Math.PI,
             rotateZ: Math.PI,
           },
           1: {
-            scaleX: 0.65,
-            scaleY: 0.65,
-            scaleZ: 0.65,
-            y: -viewport.height + 0.9,
+            scaleX: 0.5,
+            scaleY: 0.5,
+            scaleZ: 0.5,
+            y: -viewport.height + 0.5,
             x: -1.85,
             z: 5.5,
             rotateX: Math.PI / 2,
             rotateY: Math.PI,
-            rotateZ: Math.PI,
+            rotateZ: Math.PI + 0.3,
           },
           2: {
             y: -viewport.height * 2 + 0.1,
             x: -3,
             z: 0,
+            scaleX: 0,
+            scaleY: 0,
+            scaleZ: 0,
             rotateX: 0,
             rotateY: -Math.PI / 4 - 1,
             rotateZ: 0,
           },
           3: {
-            y: -viewport.height * 3 + 2,
-            x: 0.5,
-            z: 8.5,
+            y: -viewport.height * 3 + 1,
+            x: 0.8,
+            z: 7,
             rotateX: Math.PI / 2,
             rotateY: Math.PI,
             rotateZ: Math.PI,
-            scaleX: 0.8,
-            scaleY: 0.8,
-            scaleZ: 0.8,
+            scaleX: 0.5,
+            scaleY: 0.5,
+            scaleZ: 0.5,
           },
         }}
       >
-        <Shinchang animation={characterAnimation} />
+        {/* <Shinchang animation={characterAnimation} /> */}
+        <Mine animation={characterAnimation} />
+        {/* <Boy /> */}
       </motion.group>
       {/* <motion.group
         position={[0, -viewport.height, 2]}
@@ -201,14 +227,13 @@ export const Experience = (props) => {
         <Board />
       </motion.group> */}
       {/* Room */}
-      {/* <motion.group
+      <motion.group
         animate={{ y: section === 0 ? 0 : -1 }}
-        position={[2, -1.5, 5]}
-        rotation-y={-(Math.PI / 2) * 0.5}
-        scale={0.75}
+        position={[0.8, 3, 4]}
+        scale={0.5}
       >
-        <Space />
-      </motion.group> */}
+        <Totoro />
+      </motion.group>
       {/* Lab */}
       {/* <motion.group
         position={[-1.75, -viewport.height + 0.8, 5.5]}

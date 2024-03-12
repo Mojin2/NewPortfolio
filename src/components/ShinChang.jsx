@@ -18,11 +18,13 @@ export function Shinchang(props) {
   const { animations: standingAnimation } = useFBX("animations/Standing.fbx");
   const { animations: fallingAnimation } = useFBX("animations/Falling.fbx");
   const { animations: nervousAnimation } = useFBX("animations/Nervous.fbx");
+  const { animations: dancingAnimation } = useFBX("animations/Dancing.fbx");
 
   typingAnimation[0].name = "Typing";
   standingAnimation[0].name = "Standing";
   fallingAnimation[0].name = "Falling";
   nervousAnimation[0].name = "Nervous";
+  dancingAnimation[0].name = "Dancing";
 
   const { actions } = useAnimations(
     [
@@ -30,6 +32,7 @@ export function Shinchang(props) {
       standingAnimation[0],
       fallingAnimation[0],
       nervousAnimation[0],
+      dancingAnimation[0],
     ],
     group
   );

@@ -53,10 +53,16 @@ export const Skills = (props) => {
       {/* Avatar */}
       <div className=""></div>
       {/* Infomation */}
-      <div
+      <motion.div
         className="bg-[url('/paper.png')] bg-no-repeat bg-contain h-full w-full"
         style={{
           backgroundSize: "100% 100%",
+        }}
+        initial={{ opacity: 0, x: 25 }}
+        whileInView={{
+          opacity: 1,
+          x: 0,
+          transition: { duration: 1, delay: 1 },
         }}
       >
         <fieldset className="block border-[4px] border-[#222029] mx-7 my-10 h-[500px]">
@@ -237,12 +243,18 @@ export const Skills = (props) => {
             </motion.div>
           </div>
         </fieldset>
-      </div>
+      </motion.div>
       {/* Details */}
-      <div
+      <motion.div
         className="bg-[url('/paper.png')] bg-no-repeat bg-contain h-full w-full"
         style={{
           backgroundSize: "100% 100%",
+        }}
+        initial={{ opacity: 0, x: 25 }}
+        whileInView={{
+          opacity: 1,
+          x: 0,
+          transition: { duration: 1, delay: 1.2 },
         }}
       >
         <fieldset className="block border-[4px] border-[#222029] mx-7 my-10 h-[500px]">
@@ -263,7 +275,7 @@ export const Skills = (props) => {
             ))}
           </div>
         </fieldset>
-      </div>
+      </motion.div>
     </div>
   );
 };

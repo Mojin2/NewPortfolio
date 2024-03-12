@@ -58,25 +58,25 @@ export const Background = (props) => {
         {/* <meshBasicMaterial>
           <GradientTexture stops={[0, 1]} colors={["blue", "green"]} />
         </meshBasicMaterial> */}
-        <meshBasicMaterial color="#0e1528"></meshBasicMaterial>
+        <meshBasicMaterial color="white"></meshBasicMaterial>
       </mesh>
       <mesh position={[0, -viewport.height, 0]}>
         <boxGeometry args={[viewport.width, viewport.height, 3]} />
-        <meshBasicMaterial color="#0e1528"></meshBasicMaterial>
+        <meshBasicMaterial color="black"></meshBasicMaterial>
       </mesh>
       <mesh position={[0, -viewport.height * 2, 0]}>
         <boxGeometry args={[viewport.width, viewport.height, 3]} />
         {/* <meshBasicMaterial>
           <GradientTexture stops={[0, 1]} colors={["yellow", "red"]} />
         </meshBasicMaterial>{" "} */}
-        <meshBasicMaterial color="#0e1528"></meshBasicMaterial>
+        <meshBasicMaterial color="black"></meshBasicMaterial>
       </mesh>
       <mesh position={[0, -viewport.height * 3, 0]}>
         <boxGeometry args={[viewport.width, viewport.height, 3]} />
         {/* <meshBasicMaterial>
           <GradientTexture stops={[0, 1]} colors={["yellow", "red"]} />
         </meshBasicMaterial>{" "} */}
-        <meshBasicMaterial color="#0e1528"></meshBasicMaterial>
+        <meshBasicMaterial color="black"></meshBasicMaterial>
       </mesh>
     </group>
   );
