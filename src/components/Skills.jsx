@@ -35,6 +35,26 @@ export const details = [
       "At the age of 15, David first came in touch with UX Design and app development.",
   },
 ];
+export const mainstats = [
+  {
+    stat: 28,
+    max: 101,
+    src: "/heart.png",
+    color: "red",
+  },
+  {
+    stat: 28,
+    max: 101,
+    src: "/mp.png",
+    color: "blue",
+  },
+  {
+    stat: 28,
+    max: 101,
+    src: "/mp.png",
+    color: "yellow",
+  },
+];
 
 export const Skills = (props) => {
   const [age, setAge] = useState(29);
@@ -49,12 +69,12 @@ export const Skills = (props) => {
     return controls.stop;
   }, []);
   return (
-    <div className="w-screen h-screen grid grid-cols-1 sm:p-20 md:p-36 gap-1 lg:grid-cols-2 xl:grid-cols-3">
+    <div className="w-screen h-screen grid grid-cols-1 gap-1 xl:grid-cols-3">
       {/* Avatar */}
-      <div className=""></div>
+      <div className="col-span-1"></div>
       {/* Infomation */}
       <motion.div
-        className="bg-[url('/paper.png')] bg-no-repeat bg-contain h-full w-full"
+        className="bg-[url('/paper.png')] bg-no-repeat bg-contain col-span-1 xl:my-28"
         style={{
           backgroundSize: "100% 100%",
         }}
@@ -65,188 +85,95 @@ export const Skills = (props) => {
           transition: { duration: 1, delay: 1 },
         }}
       >
-        <fieldset className="block border-[4px] border-[#222029] mx-7 my-10 h-[500px]">
+        <fieldset className="block border-[4px] border-[#222029] mx-9 my-12 h-[500px]">
           <legend className="-mt-[22px] mx-auto w-[170px] text-center font-extrabold text-4xl font-Pixel text-[#222029]">
             PROFILE
           </legend>
           {/* MainInfo */}
-          <div className="w-full h-[30px] font-Silkscreen font-semibold pt-3 text-center change">
-            Fronted Developer
-          </div>
-          <div className="w-full h-[120px] flex">
-            <div className="h-full w-[150px] borde flex items-center justify-center">
-              <div className="flex flex-col items-center justify-center">
-                {/* <div className="aspect-square w-[90px] bg-black ml-2" /> */}
-                <img
-                  src={"/computer.png"}
-                  className="aspect-square w-[90px] ml-1"
-                />
-                {/* <div className="font-Silkscreen text-center">
-                  Fronted Developer
-                </div> */}
-              </div>
+          <div className="grid grid-rows-9 px-3">
+            <div className="row-span-1 font-Silkscreen font-semibold text-center change flex justify-center items-center">
+              Fronted Developer
             </div>
-            <motion.div
-              whileInView={"visible"}
-              className="flex flex-col h-full justify-center gap-y-1 w-full"
-            >
-              <div className="flex flex-row items-center">
-                <div className="px-3">
-                  <img className="w-[15px] h-[15px]" src={`/heart.png`} />
-                </div>
-                <div className="flex flex-row items-center w-3/4">
-                  <div className="h-[15px] lg:w-[120px] w-full bg-slate-100 my-1 rounded-sm shadow-2xl">
-                    <motion.div
-                      className="w-1/5 h-[15px] bg-red-600 rounded-sm shadow-2xl"
-                      initial={{ scaleX: 0, originX: 0 }}
-                      variants={{
-                        visible: {
-                          scaleX: 1,
-                          transition: { duration: 1, delay: 1 },
-                        },
-                      }}
-                    />
-                  </div>
-                  <motion.div className="font-Silkscreen text-xs w-[20px] pl-2">
-                    28/101
-                  </motion.div>
-                </div>
-              </div>
-              <div className="flex flex-row items-center">
-                <div className="px-3">
-                  <img className="w-[15px] h-[15px]" src={`/mp.png`} />
-                </div>
-                <div className="flex flex-row items-center w-3/4">
-                  <div className="h-[15px] lg:w-[120px] w-full bg-slate-100 my-1 rounded-sm shadow-2xl">
-                    <motion.div
-                      className="w-4/5 h-[15px] bg-blue-600 rounded-sm shadow-2xl"
-                      initial={{ scaleX: 0, originX: 0 }}
-                      variants={{
-                        visible: {
-                          scaleX: 1,
-                          transition: { duration: 1, delay: 1 },
-                        },
-                      }}
-                    />
-                  </div>
-                  <div className="font-Silkscreen text-xs w-[20px] pl-2">
-                    28/101
-                  </div>
-                </div>
-              </div>
-              <div className="flex flex-row items-center">
-                <div className="px-1">
-                  <div className="font-Silkscreen text-sm">EXP</div>
-                </div>
-                <div className="flex flex-row items-center w-3/4">
-                  <div className="h-[15px] lg:w-[120px] w-full bg-slate-100 my-1 rounded-sm shadow-2xl">
-                    <motion.div
-                      className="w-2/3 h-[15px] bg-yellow-400 rounded-sm shadow-2xl"
-                      initial={{ scaleX: 0, originX: 0 }}
-                      variants={{
-                        visible: {
-                          scaleX: 1,
-                          transition: { duration: 1, delay: 1 },
-                        },
-                      }}
-                    />
-                  </div>
-                  <div className="font-Silkscreen text-xs w-[20px] pl-2">
-                    28/101
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-          {/* Stats */}
-          <motion.div className="h-[150px] w-full">
-            <div className="flex w-full h-full">
+            <div className="row-span-2 flex">
               <motion.div
-                className={`h-full w-full items-center justify-center flex`}
+                whileInView={"visible"}
+                className="flex flex-col h-full justify-center gap-y-1 w-full"
               >
-                <RaderChart />
-              </motion.div>
-            </div>
-            {/* <div className="pl-5 col-span-1 w-full h-full flex justify-center items-center flex-col ">
-              <FaComputer
-                className="font-Kanit font-bold text-[#e5c869] text-shadow-brown"
-                size={90}
-              />
-              <div className="font-Kanit font-bold text-[#e5c869] text-shadow-brown">
-                Frontend
-              </div>
-            </div>
-            <div className="pl-10 col-span-1">
-              <div className="flex flex-col items-center justify-center w-full h-full gap-y-2">
-                <div className="bg-[#693f27] border-2 border-[#3d2414] pl-2 flex flex-row items-center justify-center font-Kanit text-green-600 font-bold text-shadow-green">
-                  Steady <MdOutlineKeyboardDoubleArrowUp size={30} />
-                </div>
-                <div className="bg-[#693f27] border-2 border-[#3d2414] pl-2 flex flex-row items-center justify-center font-Kanit text-green-600 font-bold text-shadow-green">
-                  Steady <MdOutlineKeyboardDoubleArrowUp size={30} />
-                </div>
-                <div className="bg-[#693f27] border-2 border-[#3d2414] pl-2 flex flex-row items-center justify-center font-Kanit text-green-600 font-bold text-shadow-green">
-                  Steady <MdOutlineKeyboardArrowUp size={30} />
-                </div>
-              </div>
-            </div>
-            <div className="col-span-1">
-              <div className="flex flex-col items-center justify-center w-full h-full gap-y-2">
-                <div className="bg-[#693f27] border-2 border-[#3d2414] pl-2 flex flex-row items-center justify-center font-Kanit text-red-600 font-bold text-shadow-red">
-                  Steady <MdOutlineKeyboardDoubleArrowDown size={30} />
-                </div>
-                <div className="bg-[#693f27] border-2 border-[#3d2414]  pl-2 flex flex-row items-center justify-center font-Kanit text-red-600 font-bold text-shadow-red">
-                  Steady <MdOutlineKeyboardArrowDown size={30} />
-                </div>
-                <div className="bg-[#693f27] border-2 border-[#3d2414]  pl-2 flex flex-row items-center justify-center invisible">
-                  Steady <MdOutlineKeyboardDoubleArrowUp size={30} />
-                </div>
-              </div>
-            </div> */}
-          </motion.div>
-          {/* Skills */}
-          <div className="">
-            <motion.div whileInView={"visible"} className="">
-              <div className="flex items-center flex-col gap-y-2 py-2">
-                {skillss.map((skill, index) => (
-                  <div
-                    className="w-full flex flex-row items-center px-5"
-                    key={index}
-                  >
-                    <motion.h3 className="w-48 font-Silkscreen text-sm font-md">
-                      {skill.title}
-                    </motion.h3>
-                    <div
-                      className="h-3.5 w-full bg-slate-100 rounded-sm shadow-2xl "
-                      // initial={{ opacity: 0 }}
-                      // variants={{
-                      //   visible: {
-                      //     opacity: 1,
-                      //     transition: { duration: 1, delay: 1 + index * 0.2 },
-                      //   },
-                      // }}
-                    >
-                      <motion.div
-                        className="h-full bg-emerald-600 rounded-sm shadow-2xl"
-                        style={{ width: `${skill.level}%` }}
-                        initial={{ scaleX: 0, originX: 0 }}
-                        variants={{
-                          visible: {
-                            scaleX: 1,
-                            transition: { duration: 1, delay: 1 + index * 0.2 },
-                          },
-                        }}
-                      />
+                {mainstats.map((mainstat, index) => (
+                  <div className="flex flex-row items-center">
+                    <div className="px-3">
+                      <img className="w-[15px]" src={mainstat.src} />
+                    </div>
+                    <div className="flex flex-row items-center w-full">
+                      <div className="h-[15px] w-full bg-slate-100 my-1 rounded-sm shadow-2xl">
+                        <motion.div
+                          className="w-1/5 h-[15px] bg-red-600 rounded-sm shadow-2xl"
+                          initial={{ scaleX: 0, originX: 0 }}
+                          variants={{
+                            visible: {
+                              scaleX: 1,
+                              transition: { duration: 1, delay: 1 },
+                            },
+                          }}
+                        />
+                      </div>
+                      <motion.div className="font-Silkscreen text-xs pl-2">
+                        28/101
+                      </motion.div>
                     </div>
                   </div>
                 ))}
+              </motion.div>
+            </div>
+            {/* Stats */}
+            <motion.div className="row-span-3">
+              <div className="flex w-full h-full">
+                <motion.div
+                  className={`h-full w-full items-center justify-center flex`}
+                >
+                  <RaderChart />
+                </motion.div>
               </div>
             </motion.div>
+            {/* Skills */}
+            <div className="row-span-3">
+              <motion.div whileInView={"visible"} className="">
+                <div className="flex items-center flex-col gap-y-2 py-2">
+                  {skillss.map((skill, index) => (
+                    <div
+                      className="w-full flex flex-row items-center px-5"
+                      key={index}
+                    >
+                      <motion.h3 className="w-48 font-Silkscreen text-sm font-md">
+                        {skill.title}
+                      </motion.h3>
+                      <div className="h-3.5 w-full bg-slate-100 rounded-sm shadow-2xl ">
+                        <motion.div
+                          className="h-full bg-emerald-600 rounded-sm shadow-2xl"
+                          style={{ width: `${skill.level}%` }}
+                          initial={{ scaleX: 0, originX: 0 }}
+                          variants={{
+                            visible: {
+                              scaleX: 1,
+                              transition: {
+                                duration: 1,
+                                delay: 1 + index * 0.2,
+                              },
+                            },
+                          }}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            </div>
           </div>
         </fieldset>
       </motion.div>
       {/* Details */}
       <motion.div
-        className="bg-[url('/paper.png')] bg-no-repeat bg-contain h-full w-full"
+        className="bg-[url('/paper.png')] bg-no-repeat bg-contain col-span-1 xl:my-28"
         style={{
           backgroundSize: "100% 100%",
         }}
@@ -257,7 +184,7 @@ export const Skills = (props) => {
           transition: { duration: 1, delay: 1.2 },
         }}
       >
-        <fieldset className="block border-[4px] border-[#222029] mx-7 my-10 h-[500px]">
+        <fieldset className="block border-[4px] border-[#222029] mx-9 my-12 h-[500px]">
           <legend className="-mt-[22px] mx-auto w-[170px] text-center font-extrabold text-4xl font-Pixel text-[#222029]">
             DETAILS
           </legend>

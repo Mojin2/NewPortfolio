@@ -5,8 +5,8 @@ import { MovingComponent } from "react-moving-text";
 export const About = (props) => {
   const { setSection } = props;
   return (
-    <div className="border-2 border-red-500 h-screen w-screen flex flex-col items-start justify-center pb-60 pl-32">
-      <h1 className="border-2 border-green-500 text-[80px] font-extrabold text-slate-950 font-PixelThick flex flex-col">
+    <div className="h-screen w-screen flex flex-col items-start justify-start md:justify-center md:pl-32">
+      <h1 className="text-[80px] font-extrabold text-slate-950 font-PixelThick flex flex-col">
         <div>Hi, I'm</div>
         <div>JeenGyu.</div>
       </h1>
@@ -56,8 +56,8 @@ export const About = (props) => {
         </div>
       </motion.div> */}
       <motion.button
-        className="px-3 py-5 bg-[#7f1423] font-PixelThick flex justify-center items-center text-slate-50 shadow-md text-3xl"
-        // onClick={() => setSection(3)}
+        className="px-3 py-5 bg-[#7f1423] font-PixelThick flex justify-center items-center text-slate-50 shadow-md text-3xl rounded-md mt-10"
+        onClick={() => setSection(3)}
         whileTap={{ scale: 0.85 }}
       >
         Play with Me?
