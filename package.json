@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.8.2",
@@ -21,6 +23,7 @@
     "css-loader": "^6.10.0",
     "framer-motion": "^11.0.3",
     "framer-motion-3d": "^11.0.3",
+    "gh-pages": "^6.1.1",
     "gsap": "^3.12.5",
     "jotai": "^2.6.4",
     "jsap": "^2.0.0",

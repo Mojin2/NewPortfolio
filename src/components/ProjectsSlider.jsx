@@ -90,9 +90,16 @@ export const ProjectsSlider = ({ projects }) => {
                     React Projects
                   </div>
                 ) : (
-                  <img
-                    src={project.image}
-                    className="w-full h-full border-[3px] border-[#8f7157] rounded-lg"
+                  <div
+                    className={`${
+                      index === 0
+                        ? "bg-[url('/public/images/1.png')]"
+                        : index === 1
+                        ? "bg-[url('/public/images/2.png')]"
+                        : index === 2
+                        ? "bg-[url('/public/images/4.png')]"
+                        : "bg-[url('/public/images/8.png')]"
+                    } bg-cover bg-no-repeat w-full h-full border-[3px] border-[#8f7157] rounded-lg`}
                   />
                 )}
               </div>

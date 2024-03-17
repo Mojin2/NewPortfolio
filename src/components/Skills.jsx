@@ -46,13 +46,13 @@ export const mainstats = [
   {
     stat: 28,
     max: 101,
-    src: "/heart.png",
+    src: "/public/images/heart.png",
     color: "red",
   },
   {
     stat: 28,
     max: 101,
-    src: "/mp.png",
+    src: "/public/images/mp.png",
     color: "blue",
   },
 ];
@@ -141,10 +141,7 @@ export const Skills = (props) => {
                 >
                   <div className="flex flex-row items-center">
                     <div className="px-3">
-                      <img
-                        className="w-[15px]"
-                        src={"/public/images/heart.png"}
-                      />
+                      <div className="w-[15px] h-[15px] bg-contain bg-no-repeat bg-[url('/public/images/heart.png')]" />
                     </div>
                     <div className="flex flex-row items-center w-full">
                       <div className="h-[15px] w-full bg-slate-100 my-1 rounded-sm shadow-2xl">
@@ -167,7 +164,7 @@ export const Skills = (props) => {
                   </div>
                   <div className="flex flex-row items-center">
                     <div className="px-3">
-                      <img className="w-[15px]" src={"/public/images/mp.png"} />
+                      <div className="w-[15px] h-[15px] bg-contain bg-no-repeat bg-[url('/public/images/mp.png')]" />
                     </div>
                     <div className="flex flex-row items-center w-full">
                       <div className="h-[15px] w-full bg-slate-100 my-1 rounded-sm shadow-2xl">
