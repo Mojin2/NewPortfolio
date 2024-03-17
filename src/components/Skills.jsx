@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react";
-import { FaComputer } from "react-icons/fa6";
+import { FaComputer, FaInfo } from "react-icons/fa6";
 import { animate, motion, useMotionValue, useTransform } from "framer-motion";
-import {
-  MdOutlineKeyboardArrowUp,
-  MdOutlineKeyboardArrowDown,
-  MdOutlineKeyboardDoubleArrowUp,
-  MdOutlineKeyboardDoubleArrowDown,
-} from "react-icons/md";
+import { MdInfo } from "react-icons/md";
 import RaderChart from "./RaderChart";
+import Popover from "@mui/material/Popover";
+import Typography from "@mui/material/Typography";
+import {
+  FcCommandLine,
+  FcInfo,
+  FcReading,
+  FcVoicePresentation,
+  FcBullish,
+} from "react-icons/fc";
 
 export const skillss = [
   { title: "JavaScript", level: 85 },
@@ -20,19 +24,23 @@ export const skillss = [
 export const details = [
   {
     story:
-      "At the age of 15, David first came in touch with UX Design and app development.",
+      "In 2020, I experienced UX design and web development for the first time.",
+    number: 1,
   },
   {
     story:
-      "At the age of 15, David first came in touch with UX Design and app development.",
+      "In 2021~22, I started web development in earnest through coding club activities.",
+    number: 2,
   },
   {
     story:
-      "At the age of 15, David first came in touch with UX Design and app development.",
+      "After graduating, I developed my skills by carrying out side projects using React starting in 2023.",
+    number: 3,
   },
   {
     story:
-      "At the age of 15, David first came in touch with UX Design and app development.",
+      "In 2024, I am interested in and learning the latest technologies such as r3f.",
+    number: 4,
   },
 ];
 export const mainstats = [
@@ -48,12 +56,6 @@ export const mainstats = [
     src: "/mp.png",
     color: "blue",
   },
-  {
-    stat: 28,
-    max: 101,
-    src: "/mp.png",
-    color: "yellow",
-  },
 ];
 
 export const Skills = (props) => {
@@ -63,6 +65,21 @@ export const Skills = (props) => {
   const count = useMotionValue(0);
   const roundone = useTransform(count, (latest) => Math.round(latest));
   const isMobile = window.innerWidth < 768;
+  const todayTime = new Date();
+  const targetdatTime = new Date("2024-12-31");
+  const diff = targetdatTime - todayTime;
+  const [anchorEl, setAnchorEl] = useState(null);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  const open = Boolean(anchorEl);
+  const id = open ? "simple-popover" : undefined;
+
+  const diffDay = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const exp = 365 - diffDay + 1;
 
   useEffect(() => {
     const controls = animate(count, 100, { duration: 1 });
@@ -118,36 +135,105 @@ export const Skills = (props) => {
               <div className="row-span-1 font-Silkscreen font-semibold text-center change flex justify-center items-center">
                 Fronted Developer
               </div>
-              <div className="row-span-2 flex">
+              <div className="row-span-2 gap-x-3 flex">
                 <motion.div
                   whileInView={"visible"}
                   className="flex flex-col h-full justify-center gap-y-1 w-full"
                 >
-                  {mainstats.map((mainstat, index) => (
-                    <div className="flex flex-row items-center">
-                      <div className="px-3">
-                        <img className="w-[15px]" src={mainstat.src} />
-                      </div>
-                      <div className="flex flex-row items-center w-full">
-                        <div className="h-[15px] w-full bg-slate-100 my-1 rounded-sm shadow-2xl">
-                          <motion.div
-                            className="w-1/5 h-[15px] bg-red-600 rounded-sm shadow-2xl"
-                            initial={{ scaleX: 0, originX: 0 }}
-                            variants={{
-                              visible: {
-                                scaleX: 1,
-                                transition: { duration: 1, delay: 1 },
-                              },
-                            }}
-                          />
-                        </div>
-                        <motion.div className="font-Silkscreen text-xs pl-2">
-                          28/101
-                        </motion.div>
-                      </div>
+                  <div className="flex flex-row items-center">
+                    <div className="px-3">
+                      <img className="w-[15px]" src={"/heart.png"} />
                     </div>
-                  ))}
+                    <div className="flex flex-row items-center w-full">
+                      <div className="h-[15px] w-full bg-slate-100 my-1 rounded-sm shadow-2xl">
+                        <motion.div
+                          className="h-[15px] bg-red-600 rounded-sm shadow-2xl"
+                          style={{ width: `${(age / 100) * 100}%` }}
+                          initial={{ scaleX: 0, originX: 0 }}
+                          variants={{
+                            visible: {
+                              scaleX: 1,
+                              transition: { duration: 1, delay: 2.5 },
+                            },
+                          }}
+                        />
+                      </div>
+                      <motion.div className="font-PixelThick text-md pl-2">
+                        {`${age}/100`}
+                      </motion.div>
+                    </div>
+                  </div>
+                  <div className="flex flex-row items-center">
+                    <div className="px-3">
+                      <img className="w-[15px]" src={"/mp.png"} />
+                    </div>
+                    <div className="flex flex-row items-center w-full">
+                      <div className="h-[15px] w-full bg-slate-100 my-1 rounded-sm shadow-2xl">
+                        <motion.div
+                          className="h-[15px] bg-blue-600 rounded-sm shadow-2xl"
+                          initial={{ scaleX: 0, originX: 0 }}
+                          style={{ width: `${(exp / 365) * 100}%` }}
+                          variants={{
+                            visible: {
+                              scaleX: 1,
+                              transition: { duration: 1, delay: 2.5 },
+                            },
+                          }}
+                        />
+                      </div>
+                      <motion.div className="font-PixelThick text-md pl-2">
+                        {`${exp}/365`}
+                      </motion.div>
+                    </div>
+                  </div>
+                  <div className="flex flex-row items-center">
+                    <div className="px-3">
+                      <div className="w-[15px] font-PixelThick">EXP</div>
+                    </div>
+                    <div className="flex flex-row items-center w-full">
+                      <div className="h-[15px] w-full bg-slate-100 my-1 rounded-sm shadow-2xl">
+                        <motion.div
+                          className="h-[15px] bg-yellow-400 rounded-sm shadow-2xl"
+                          style={{ width: `79%` }}
+                          initial={{ scaleX: 0, originX: 0 }}
+                          variants={{
+                            visible: {
+                              scaleX: 1,
+                              transition: { duration: 1, delay: 2.5 },
+                            },
+                          }}
+                        />
+                      </div>
+                      <motion.div className="font-PixelThick text-md pl-2">
+                        {`79/100`}
+                      </motion.div>
+                    </div>
+                  </div>
                 </motion.div>
+                <div className="flex items-center justify-center">
+                  <MdInfo
+                    className="text-xl"
+                    aria-describedby={id}
+                    onClick={handleClick}
+                  />
+                  <Popover
+                    id={id}
+                    open={open}
+                    anchorEl={anchorEl}
+                    onClose={handleClose}
+                    anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+                  >
+                    <Typography className="p-2">
+                      <div className="font-PixelThick">HP : Age</div>
+                      <div className="font-PixelThick">
+                        MP : Dating Until Next Age
+                      </div>
+                      <div className="font-PixelThick">
+                        EXP : Coding Proficiency
+                      </div>
+                    </Typography>
+                  </Popover>
+                </div>
               </div>
               {/* Stats */}
               <motion.div className="row-span-3">
@@ -162,13 +248,13 @@ export const Skills = (props) => {
               {/* Skills */}
               <div className="row-span-3">
                 <motion.div whileInView={"visible"} className="">
-                  <div className="flex items-center flex-col gap-y-2 py-2">
+                  <div className="flex items-center flex-col">
                     {skillss.map((skill, index) => (
                       <div
                         className="w-full flex flex-row items-center px-5"
                         key={index}
                       >
-                        <motion.h3 className="w-48 font-Silkscreen text-sm font-md">
+                        <motion.h3 className="w-48 font-PixelThick text-lg">
                           {skill.title}
                         </motion.h3>
                         <div className="h-3.5 w-full bg-slate-100 rounded-sm shadow-2xl ">
@@ -181,7 +267,7 @@ export const Skills = (props) => {
                                 scaleX: 1,
                                 transition: {
                                   duration: 1,
-                                  delay: 1 + index * 0.2,
+                                  delay: 2.5 + index * 0.2,
                                 },
                               },
                             }}
@@ -199,14 +285,22 @@ export const Skills = (props) => {
             <legend className="-mt-[22px] mx-auto w-[170px] text-center font-extrabold text-4xl font-Pixel text-[#222029]">
               DETAILS
             </legend>
-            <div className="grid grid-rows-4 my-4 gap-y-2">
+            <div className="grid grid-rows-4 my-4">
               {details.map((detail, index) => (
                 <div
-                  className="flex flex-row gap-5 px-7 items-center"
+                  className="flex flex-row gap-x-3 px-3 items-center"
                   key={index}
                 >
-                  <FaComputer size={90} />
-                  <div className="row-span-1 font-Pixel text-[#222029]">
+                  {detail.number === 1 ? (
+                    <FcCommandLine size={90} />
+                  ) : detail.number === 2 ? (
+                    <FcVoicePresentation size={90} />
+                  ) : detail.number === 3 ? (
+                    <FcReading size={90} />
+                  ) : (
+                    <FcBullish size={90} />
+                  )}
+                  <div className="row-span-1 font-PixelThick text-[17px] text-[#222029]">
                     {detail.story}
                   </div>
                 </div>
@@ -215,38 +309,6 @@ export const Skills = (props) => {
           </fieldset>
         )}
       </motion.div>
-      {/* Details */}
-      {/* <motion.div
-        className="bg-[url('/paper.png')] bg-no-repeat bg-contain border-2 border-blue-500 w-[350px] h-[500px]"
-        style={{
-          backgroundSize: "100% 100%",
-        }}
-        initial={{ opacity: 0, x: 25 }}
-        whileInView={{
-          opacity: 1,
-          x: 0,
-          transition: { duration: 1, delay: 1.2 },
-        }}
-      >
-        <fieldset className="block border-[4px] border-[#222029] mx-9 my-12 h-[500px]">
-          <legend className="-mt-[22px] mx-auto w-[170px] text-center font-extrabold text-4xl font-Pixel text-[#222029]">
-            DETAILS
-          </legend>
-          <div className="grid grid-rows-4 my-4 gap-y-2">
-            {details.map((detail, index) => (
-              <div
-                className="flex flex-row gap-5 px-7 items-center"
-                key={index}
-              >
-                <FaComputer size={90} />
-                <div className="row-span-1 font-Pixel text-[#222029]">
-                  {detail.story}
-                </div>
-              </div>
-            ))}
-          </div>
-        </fieldset>
-      </motion.div> */}
     </div>
   );
 };

@@ -2,6 +2,52 @@ import React, { useState } from "react";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { FaGithub } from "react-icons/fa";
 
+export const projectss = [
+  {
+    title: "Covid Crawler",
+    url: undefined,
+    git: "https://github.com/Mojin2/Covid_Crawling",
+    image: "ui/1.png",
+    languages: ["Python", "JavaScript"],
+    description:
+      "Crawl the number of confirmed covid patients with python, provide a search function through the LED board using Raspberry Pi GPIO.",
+  },
+  {
+    title: "CarbonMBTI",
+    url: undefined,
+    git: "https://github.com/TSJK-MBTI/CarbonMBTI",
+    image: "ui/2.png",
+    languages: ["JavaScript", "HTML", "CSS"],
+    description:
+      "Provides information on carbon emissions and improvement measures in the result window by using the mbit test format.",
+  },
+  {
+    title: "Salgu Market",
+    url: undefined,
+    git: "https://github.com/SalguMarket/SalguMarket",
+    image: "ui/4.PNG",
+    languages: ["Spring", "JavaScript", "HTML", "CSS"],
+    description:
+      "Used food material and waste material trading market project created using the Spring framework.",
+  },
+  {
+    title: "React Projects",
+    url: undefined,
+    git: "https://github.com/Mojin2/React_Project",
+    image: undefined,
+    languages: ["React", "TypeScript", "HTML", "CSS"],
+    description: undefined,
+  },
+  {
+    title: "Portfolio",
+    url: "https://Mojin2.github.io/Portfolio",
+    git: "https://github.com/Mojin2/Portfolio",
+    image: "ui/8.PNG",
+    languages: ["React", "R3F", "JavaScript", "HTML", "CSS"],
+    description:
+      "The old verstion used React, and the new version uses a 3D model through r3f in React and has been imporved to a responsive web. It's old version, and now you viewing is new version.",
+  },
+];
 export const ProjectsSlider = ({ projects }) => {
   const [currentIndex, setCurrentIndex] = useState(2);
 
@@ -29,7 +75,7 @@ export const ProjectsSlider = ({ projects }) => {
         className="flex transition-transform duration-500 ease-in-out "
         style={{ transform: `translateX(${20.1 * (2 - currentIndex)}%)` }}
       >
-        {projects.map((project, index) => (
+        {projectss.map((project, index) => (
           // Project Details
           <div
             key={index}
@@ -39,7 +85,16 @@ export const ProjectsSlider = ({ projects }) => {
           >
             <div className="flex flex-col w-full h-full">
               <div className=" w-full h-[240px] flex items-center justify-center p-2">
-                <div className="bg-black w-full h-full rounded-lg border-[3px] border-[#8f7157]" />
+                {project.image === undefined ? (
+                  <div className="text-slate-50 w-full h-full border-[3px] border-[#8f7157] rounded-lg bg-slate-900 flex items-center justify-center font-PixelThick">
+                    React Projects
+                  </div>
+                ) : (
+                  <img
+                    src={project.image}
+                    className="w-full h-full border-[3px] border-[#8f7157] rounded-lg"
+                  />
+                )}
               </div>
               <div className=" w-full h-[150px] px-2">
                 <div className="text-4xl font-PixelThick text-[#8f7157] text-shadow-brown">
@@ -65,6 +120,42 @@ export const ProjectsSlider = ({ projects }) => {
                           {lang}
                         </div>
                       );
+                    } else if (lang === "Python") {
+                      return (
+                        <div
+                          className="bg-red-600 text-slate-50 rounded-full px-2 text-xs font-PixelCute flex items-center justify-center"
+                          key={index}
+                        >
+                          {lang}
+                        </div>
+                      );
+                    } else if (lang === "TypeScript") {
+                      return (
+                        <div
+                          className="bg-cyan-600 text-slate-50 rounded-full px-2 text-xs font-PixelCute flex items-center justify-center"
+                          key={index}
+                        >
+                          {lang}
+                        </div>
+                      );
+                    } else if (lang === "R3F") {
+                      return (
+                        <div
+                          className="bg-indigo-600 text-slate-50 rounded-full px-2 text-xs font-PixelCute flex items-center justify-center"
+                          key={index}
+                        >
+                          {lang}
+                        </div>
+                      );
+                    } else if (lang === "Spring") {
+                      return (
+                        <div
+                          className="bg-blue-600 text-slate-50 rounded-full px-2 text-xs font-PixelCute flex items-center justify-center"
+                          key={index}
+                        >
+                          {lang}
+                        </div>
+                      );
                     } else {
                       return (
                         <div
@@ -77,43 +168,68 @@ export const ProjectsSlider = ({ projects }) => {
                     }
                   })}
                 </div>
-                <div className="mt-2 text-2xl font-PixelCute text-[#9d8469] text-shadow-brown">
-                  {project.description}
-                </div>
+                {project.description ? (
+                  <div className="mt-2 text-sm font-PixelThick text-[#9d8469] text-shadow-brown">
+                    {project.description}
+                  </div>
+                ) : (
+                  <div className="flex flex-col gap-y-1 mt-3 text-sm underline font-PixelThick text-[#9d8469] text-shadow-brown">
+                    <div
+                      onClick={() =>
+                        window.open(
+                          "https://mojin2.github.io/CoinTracker",
+                          "_blank"
+                        )
+                      }
+                      className="cursor-pointer"
+                    >
+                      CoinTracker (Click here to Live View)
+                    </div>
+                    <div
+                      onClick={() =>
+                        window.open(
+                          "https://mojin2.github.io/ToDolist",
+                          "_blank"
+                        )
+                      }
+                      className="cursor-pointer"
+                    >
+                      ToDolist (Click here to Live View)
+                    </div>
+                    <div
+                      onClick={() =>
+                        window.open(
+                          "https://mojin2.github.io/Movieflix",
+                          "_blank"
+                        )
+                      }
+                      className="cursor-pointer"
+                    >
+                      MovieFlix (Click here to Live View)
+                    </div>
+                  </div>
+                )}
               </div>
               <div className="w-full h-[65px] flex flex-row gap-3 p-2">
-                <div className="bg-[url('/brownbutton.png')] bg-cover bg-no-repeat h-full w-[250px] rounded-lg font-PixelThick text-xl flex items-center justify-center text-[#36242b]">
+                <div
+                  onClick={() => window.open(project.git, "_blank")}
+                  className="cursor-pointer bg-[url('/brownbutton.png')] bg-cover bg-no-repeat h-full w-[250px] rounded-lg font-PixelThick text-xl flex items-center justify-center text-[#36242b]"
+                >
                   git
                 </div>
-                <div className="bg-[url('/brownbutton.png')] bg-cover bg-no-repeat h-full w-[250px] rounded-lg font-PixelThick text-xl flex items-center justify-center text-[#36242b]">
+                <div
+                  onClick={() => {
+                    if (project.url === undefined) {
+                      alert("Deployment halted.");
+                    } else {
+                      window.open(project.url, "_blank");
+                    }
+                  }}
+                  className="cursor-pointer bg-[url('/brownbutton.png')] bg-cover bg-no-repeat h-full w-[250px] rounded-lg font-PixelThick text-xl flex items-center justify-center text-[#36242b]"
+                >
                   Live View
                 </div>
               </div>
-              {/* <div className="mb-28">
-                <div className="w-80 h-64 bg-black rounded-lg mb-2" />
-                <div className="flex items-start flex-col mx-2">
-                  <p className="font-bold text-3xl mb-2">{project.title}</p>
-                  <div className="flex flex-row gap-3 text-xs mb-3">
-                    {project.languages.map((language, index) => (
-                      <div
-                        className="border rounded-xl px-2 border-slate-600"
-                        key={index}
-                      >
-                        {language}
-                      </div>
-                    ))}
-                  </div>
-                  <p className="text-xl">{project.description}</p>
-                </div>
-              </div>
-              <div className="flex w-[91%] flex-row gap-2 bottom-3 absolute">
-                <div className="bg-slate-400 w-1/5 flex items-center justify-center rounded-lg text-slate-50 text-lg py-2 font-bold">
-                  <FaGithub className="text-2xl" />
-                </div>
-                <div className="bg-orange-300 w-4/5 flex items-center justify-center rounded-lg text-slate-50 text-lg py-2 font-bold">
-                  Live View
-                </div>
-              </div> */}
             </div>
           </div>
         ))}

@@ -18,12 +18,12 @@ export const data = {
     "Steady",
     "Introvert",
     "Extrovert",
-    "Deliberation",
+    "Laziness",
     "Passionate",
   ],
   datasets: [
     {
-      data: [10, 9, 8, 7, 10, 6],
+      data: [8, 10, 8, 5, 2, 9],
       backgroundColor: "rgba(255, 99, 132, 0.4)",
       //   borderColor: "rgba(255, 99, 132, 0.2)",
       //   borderWidth: 1,
@@ -69,9 +69,9 @@ const options = {
       //라벨 속성 지정.
       pointLabels: {
         font: {
-          size: 13,
+          size: 14,
           weight: "500",
-          family: "Silkscreen",
+          family: "Pixel-Thick",
         },
         color: "black",
       },

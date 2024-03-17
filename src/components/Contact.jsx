@@ -74,18 +74,30 @@ export const Contact = () => {
             <div className="flex gap-5 mt-3">
               <motion.button
                 whileTap={{ scale: 0.85 }}
+                onClick={() =>
+                  window.open("https://www.instagram.com/wlsrbbb/", "_blank")
+                }
                 className="hover:opacity-85 bg-[#dd2a7b] p-3 w-[60px] h-[60px] rounded-full flex items-center justify-center"
               >
-                <BsInstagram className="text-5xl" />
+                <BsInstagram className="text-4xl" />
               </motion.button>
               <motion.button
                 whileTap={{ scale: 0.85 }}
+                onClick={() =>
+                  window.open("https://github.com/Mojin2", "_blank")
+                }
                 className="hover:opacity-85 bg-[#333] p-3 w-[60px] h-[60px] rounded-full flex items-center justify-center"
               >
                 <FiGithub className="text-5xl mt-1" />
               </motion.button>
               <motion.button
                 whileTap={{ scale: 0.85 }}
+                onClick={() =>
+                  window.open(
+                    "https://www.facebook.com/profile.php?id=100004008876656",
+                    "_blank"
+                  )
+                }
                 className="hover:opacity-85 bg-[#3b5998] p-3 w-[60px] h-[60px] rounded-full flex items-center justify-center"
               >
                 <FaFacebookF className="text-3xl mt-1" />
