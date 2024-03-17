@@ -18,9 +18,9 @@ export const ProjectsSlider = ({ projects }) => {
   };
 
   return (
-    <div className="relative w-screen h-screen flex items-center flex-col bg-transparent">
+    <div className="w-screen h-screen flex items-center flex-col bg-transparent">
       <div>
-        <div className="w-screen flex flex-col ml-20 pt-10 mb-10 text-white font-extrabold text-6xl">
+        <div className="w-screen flex flex-col ml-20 mb-10 text-white font-extrabold text-5xl md:text-6xl">
           <p className="font-PixelThick">Some things</p>
           <p className="font-PixelThick">I've worked on.</p>
         </div>

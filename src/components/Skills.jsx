@@ -59,9 +59,10 @@ export const mainstats = [
 export const Skills = (props) => {
   const [age, setAge] = useState(29);
   const { section } = props;
-
+  const [page, setPage] = useState(true);
   const count = useMotionValue(0);
   const roundone = useTransform(count, (latest) => Math.round(latest));
+  const isMobile = window.innerWidth < 768;
 
   useEffect(() => {
     const controls = animate(count, 100, { duration: 1 });
@@ -69,12 +70,12 @@ export const Skills = (props) => {
     return controls.stop;
   }, []);
   return (
-    <div className="w-screen h-screen grid grid-cols-1 gap-1 xl:grid-cols-3">
+    <div className="w-screen h-screen flex items-center justify-center px-24 gap-x-2">
       {/* Avatar */}
-      <div className="col-span-1"></div>
+      <div className="w-[400px] h-[600px] flex"></div>
       {/* Infomation */}
       <motion.div
-        className="bg-[url('/paper.png')] bg-no-repeat bg-contain col-span-1 xl:my-28"
+        className="relative bg-[url('/paper.png')]  bg-no-repeat bg-contain w-[400px] h-[600px] min-w-[400px]"
         style={{
           backgroundSize: "100% 100%",
         }}
@@ -82,98 +83,141 @@ export const Skills = (props) => {
         whileInView={{
           opacity: 1,
           x: 0,
-          transition: { duration: 1, delay: 1 },
+          transition: { duration: 1, delay: isMobile ? 2 : 1 },
         }}
       >
-        <fieldset className="block border-[4px] border-[#222029] mx-9 my-12 h-[500px]">
-          <legend className="-mt-[22px] mx-auto w-[170px] text-center font-extrabold text-4xl font-Pixel text-[#222029]">
+        <div className="absolute -top-1 letf-0 flex gap-x-1">
+          <div
+            className={`${
+              page
+                ? "opacity-100 bg-[url('/redlabel.png')]"
+                : "opacity-65 bg-[url('/blacklabel.png')]"
+            } cursor-pointer font-PixelThick bg-contain bg-no-repeat w-[110px] h-[35px] flex items-center justify-center text-slate-50`}
+            onClick={() => setPage(true)}
+          >
             PROFILE
-          </legend>
-          {/* MainInfo */}
-          <div className="grid grid-rows-9 px-3">
-            <div className="row-span-1 font-Silkscreen font-semibold text-center change flex justify-center items-center">
-              Fronted Developer
-            </div>
-            <div className="row-span-2 flex">
-              <motion.div
-                whileInView={"visible"}
-                className="flex flex-col h-full justify-center gap-y-1 w-full"
-              >
-                {mainstats.map((mainstat, index) => (
-                  <div className="flex flex-row items-center">
-                    <div className="px-3">
-                      <img className="w-[15px]" src={mainstat.src} />
-                    </div>
-                    <div className="flex flex-row items-center w-full">
-                      <div className="h-[15px] w-full bg-slate-100 my-1 rounded-sm shadow-2xl">
-                        <motion.div
-                          className="w-1/5 h-[15px] bg-red-600 rounded-sm shadow-2xl"
-                          initial={{ scaleX: 0, originX: 0 }}
-                          variants={{
-                            visible: {
-                              scaleX: 1,
-                              transition: { duration: 1, delay: 1 },
-                            },
-                          }}
-                        />
-                      </div>
-                      <motion.div className="font-Silkscreen text-xs pl-2">
-                        28/101
-                      </motion.div>
-                    </div>
-                  </div>
-                ))}
-              </motion.div>
-            </div>
-            {/* Stats */}
-            <motion.div className="row-span-3">
-              <div className="flex w-full h-full">
-                <motion.div
-                  className={`h-full w-full items-center justify-center flex`}
-                >
-                  <RaderChart />
-                </motion.div>
+          </div>
+          <div
+            className={`${
+              page
+                ? "opacity-65 bg-[url('/blacklabel.png')]"
+                : "opacity-100 bg-[url('/redlabel.png')]"
+            } cursor-pointer font-PixelThick bg-contain bg-no-repeat w-[110px] h-[35px] flex items-center justify-center text-slate-50`}
+            onClick={() => setPage(false)}
+          >
+            DETAILS
+          </div>
+        </div>
+        {page ? (
+          <fieldset className="block border-[4px] border-[#222029] mx-9 my-12 h-[500px]">
+            <legend className="-mt-[22px] mx-auto w-[170px] text-center font-extrabold text-4xl font-Pixel text-[#222029]">
+              PROFILE
+            </legend>
+            {/* MainInfo */}
+            <div className="grid grid-rows-9 px-3">
+              <div className="row-span-1 font-Silkscreen font-semibold text-center change flex justify-center items-center">
+                Fronted Developer
               </div>
-            </motion.div>
-            {/* Skills */}
-            <div className="row-span-3">
-              <motion.div whileInView={"visible"} className="">
-                <div className="flex items-center flex-col gap-y-2 py-2">
-                  {skillss.map((skill, index) => (
-                    <div
-                      className="w-full flex flex-row items-center px-5"
-                      key={index}
-                    >
-                      <motion.h3 className="w-48 font-Silkscreen text-sm font-md">
-                        {skill.title}
-                      </motion.h3>
-                      <div className="h-3.5 w-full bg-slate-100 rounded-sm shadow-2xl ">
-                        <motion.div
-                          className="h-full bg-emerald-600 rounded-sm shadow-2xl"
-                          style={{ width: `${skill.level}%` }}
-                          initial={{ scaleX: 0, originX: 0 }}
-                          variants={{
-                            visible: {
-                              scaleX: 1,
-                              transition: {
-                                duration: 1,
-                                delay: 1 + index * 0.2,
+              <div className="row-span-2 flex">
+                <motion.div
+                  whileInView={"visible"}
+                  className="flex flex-col h-full justify-center gap-y-1 w-full"
+                >
+                  {mainstats.map((mainstat, index) => (
+                    <div className="flex flex-row items-center">
+                      <div className="px-3">
+                        <img className="w-[15px]" src={mainstat.src} />
+                      </div>
+                      <div className="flex flex-row items-center w-full">
+                        <div className="h-[15px] w-full bg-slate-100 my-1 rounded-sm shadow-2xl">
+                          <motion.div
+                            className="w-1/5 h-[15px] bg-red-600 rounded-sm shadow-2xl"
+                            initial={{ scaleX: 0, originX: 0 }}
+                            variants={{
+                              visible: {
+                                scaleX: 1,
+                                transition: { duration: 1, delay: 1 },
                               },
-                            },
-                          }}
-                        />
+                            }}
+                          />
+                        </div>
+                        <motion.div className="font-Silkscreen text-xs pl-2">
+                          28/101
+                        </motion.div>
                       </div>
                     </div>
                   ))}
+                </motion.div>
+              </div>
+              {/* Stats */}
+              <motion.div className="row-span-3">
+                <div className="flex w-full h-full">
+                  <motion.div
+                    className={`h-full w-full items-center justify-center flex`}
+                  >
+                    <RaderChart />
+                  </motion.div>
                 </div>
               </motion.div>
+              {/* Skills */}
+              <div className="row-span-3">
+                <motion.div whileInView={"visible"} className="">
+                  <div className="flex items-center flex-col gap-y-2 py-2">
+                    {skillss.map((skill, index) => (
+                      <div
+                        className="w-full flex flex-row items-center px-5"
+                        key={index}
+                      >
+                        <motion.h3 className="w-48 font-Silkscreen text-sm font-md">
+                          {skill.title}
+                        </motion.h3>
+                        <div className="h-3.5 w-full bg-slate-100 rounded-sm shadow-2xl ">
+                          <motion.div
+                            className="h-full bg-emerald-600 rounded-sm shadow-2xl"
+                            style={{ width: `${skill.level}%` }}
+                            initial={{ scaleX: 0, originX: 0 }}
+                            variants={{
+                              visible: {
+                                scaleX: 1,
+                                transition: {
+                                  duration: 1,
+                                  delay: 1 + index * 0.2,
+                                },
+                              },
+                            }}
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              </div>
             </div>
-          </div>
-        </fieldset>
+          </fieldset>
+        ) : (
+          <fieldset className="block border-[4px] border-[#222029] mx-9 my-12 h-[500px]">
+            <legend className="-mt-[22px] mx-auto w-[170px] text-center font-extrabold text-4xl font-Pixel text-[#222029]">
+              DETAILS
+            </legend>
+            <div className="grid grid-rows-4 my-4 gap-y-2">
+              {details.map((detail, index) => (
+                <div
+                  className="flex flex-row gap-5 px-7 items-center"
+                  key={index}
+                >
+                  <FaComputer size={90} />
+                  <div className="row-span-1 font-Pixel text-[#222029]">
+                    {detail.story}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </fieldset>
+        )}
       </motion.div>
       {/* Details */}
-      <motion.div
-        className="bg-[url('/paper.png')] bg-no-repeat bg-contain col-span-1 xl:my-28"
+      {/* <motion.div
+        className="bg-[url('/paper.png')] bg-no-repeat bg-contain border-2 border-blue-500 w-[350px] h-[500px]"
         style={{
           backgroundSize: "100% 100%",
         }}
@@ -202,7 +246,7 @@ export const Skills = (props) => {
             ))}
           </div>
         </fieldset>
-      </motion.div>
+      </motion.div> */}
     </div>
   );
 };

@@ -4,51 +4,55 @@ import { Tooltip } from "react-tooltip";
 import { BsInstagram, BsGithub, BsGit, BsFacebook } from "react-icons/bs";
 import { FiGithub } from "react-icons/fi";
 import { FaFacebookF } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 export const Contact = () => {
   const [open, setOpen] = useState(false);
   const [hov, setHov] = useState(false);
   const [text, setText] = useState("copy");
+  const isMobile = window.innerWidth < 768;
+
   return (
     <div
       className={`${
         open ? "bg-transparent delay-500" : "bg-black"
-      } relative text-slate-50 h-screen w-screen p-32  flex flex-col items-center justify-center transition-all duration-500`}
+      } relative text-slate-50 h-screen w-screen px-28 flex flex-col transition-all duration-500`}
     >
       {/* First */}
       <div
         className={`${
           open ? "opacity-0" : "opacity-100 delay-500"
-        } flex items-center justify-center flex-col transition-all duration-500`}
+        } w-full h-full flex items-center justify-center flex-col transition-all duration-500`}
       >
         <div className="font-PixelThick text-slate-50 text-6xl">
           Let's work together
         </div>
-        <div
+        <motion.button
           onClick={() => setOpen(true)}
           onMouseEnter={() => setHov(true)}
           onMouseOut={() => setHov(false)}
-          className="font-PixelThick text-slate-50 text-3xl border-2 border-slate-50 rounded-2xl px-3 mt-5 cursor-pointer z-10"
+          whileTap={{ scale: 0.85 }}
+          className="hover:bg-red-800 font-PixelThick text-slate-50 text-3xl border-2 border-slate-50 rounded-2xl px-3 mt-5 cursor-pointer z-10"
         >
           Say hello
-        </div>
+        </motion.button>
         <div
           className={`${
             hov ? "md:-bottom-[115px]" : "md:-bottom-[300px]"
-          } transition-all duration-300 ease-in-out -bottom-[140px] absolute ml-32 bg-[url('ui/finger.png')] bg-contain w-[500px] h-[500px] z-1`}
+          } transition-all duration-300 ease-in-out -bottom-[190px] absolute ml-32 bg-[url('ui/finger.png')] bg-contain w-[500px] h-[500px] z-1`}
         ></div>
       </div>
       {/* Second */}
       <div
         className={`${
           open ? "opacity-100 delay-500" : "opacity-0"
-        } w-full h-full absolute flex justify-center items-center flex-row transition-all duration-500`}
+        } w-full h-full absolute top-0 left-0 transition-all duration-500`}
       >
-        <div className="w-1/2 h-full flex items-center justify-center flex-col z-10">
+        <div className="w-full md:w-1/2 h-full flex md:justify-center md:mt-0 items-center mt-16 flex-col z-10">
           <div className="font-PixelThick text-slate-50 text-6xl">
             <div>Let's work</div>
             <div>together</div>
-            <div className="mt-10">
+            <div className="mt-1">
               <p className="text-2xl">Contact</p>
               <CopyToClipboard
                 text="aiduriaaa@gmail.com"
@@ -60,26 +64,36 @@ export const Contact = () => {
                 </div>
               </CopyToClipboard>
             </div>
-            <div
+            <motion.button
               onClick={() => setOpen(false)}
-              className=" font-PixelThick text-slate-50 text-3xl border-2 border-slate-50 rounded-2xl px-3 mt-5 cursor-pointer z-10 w-[110px]"
+              whileTap={{ scale: 0.85 }}
+              className="hover:bg-red-800  font-PixelThick text-slate-50 text-3xl border-2 border-slate-50 rounded-2xl px-3 mt-5 cursor-pointer z-10 w-[110px]"
             >
               Return
-            </div>
-            <div className="flex gap-5 mt-5">
-              <div className="bg-[#dd2a7b] p-3 rounded-full flex items-center justify-center">
+            </motion.button>
+            <div className="flex gap-5 mt-3">
+              <motion.button
+                whileTap={{ scale: 0.85 }}
+                className="hover:opacity-85 bg-[#dd2a7b] p-3 w-[60px] h-[60px] rounded-full flex items-center justify-center"
+              >
                 <BsInstagram className="text-5xl" />
-              </div>
-              <div className="bg-[#333] p-3 rounded-full flex items-center justify-center">
+              </motion.button>
+              <motion.button
+                whileTap={{ scale: 0.85 }}
+                className="hover:opacity-85 bg-[#333] p-3 w-[60px] h-[60px] rounded-full flex items-center justify-center"
+              >
                 <FiGithub className="text-5xl mt-1" />
-              </div>
-              <div className="bg-[#3b5998] p-3 rounded-full flex items-center justify-center">
-                <FaFacebookF className="text-5xl mt-1" />
-              </div>
+              </motion.button>
+              <motion.button
+                whileTap={{ scale: 0.85 }}
+                className="hover:opacity-85 bg-[#3b5998] p-3 w-[60px] h-[60px] rounded-full flex items-center justify-center"
+              >
+                <FaFacebookF className="text-3xl mt-1" />
+              </motion.button>
             </div>
           </div>
         </div>
-        <div className="w-1/2 h-full"></div>
+        <div className={`${isMobile ? "hidden" : ""} w-1/2 h-full`}></div>
       </div>
       <Tooltip id="tooltip" place="right" className="-ml-16 font-PixelThick" />
     </div>
