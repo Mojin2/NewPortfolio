@@ -241,7 +241,7 @@ export const ProjectsSlider = ({ projects }) => {
           disabled={currentIndex === 0 ? true : false}
           className={`${
             currentIndex === 0
-              ? "bg-slate-400"
+              ? "bg-slate-600"
               : "bg-[#8f7157] hover:bg-[#a88f73]"
           } rounded-full w-[54px] h-[54px] flex items-center justify-center`}
         >
@@ -252,7 +252,7 @@ export const ProjectsSlider = ({ projects }) => {
           disabled={currentIndex === projects.length - 1 ? true : false}
           className={`${
             currentIndex === projects.length - 1
-              ? "bg-slate-400"
+              ? "bg-slate-600"
               : "bg-[#8f7157] hover:bg-[#a88f73]"
           } rounded-full w-[54px] h-[54px] flex items-center justify-center`}
         >
