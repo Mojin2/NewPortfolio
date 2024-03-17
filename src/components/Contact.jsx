@@ -39,7 +39,7 @@ export const Contact = () => {
         <div
           className={`${
             hov ? "md:-bottom-[115px]" : "md:-bottom-[300px]"
-          } transition-all duration-300 ease-in-out -bottom-[190px] absolute ml-32 bg-[url('ui/finger.png')] bg-contain w-[500px] h-[500px] z-1`}
+          } transition-all duration-300 ease-in-out -bottom-[190px] absolute ml-32 bg-[url('/public/images/finger.png')] bg-contain w-[500px] h-[500px] z-1`}
         ></div>
       </div>
       {/* Second */}

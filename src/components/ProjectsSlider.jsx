@@ -7,7 +7,7 @@ export const projectss = [
     title: "Covid Crawler",
     url: undefined,
     git: "https://github.com/Mojin2/Covid_Crawling",
-    image: "ui/1.png",
+    image: "/public/images/1.png",
     languages: ["Python", "JavaScript"],
     description:
       "Crawl the number of confirmed covid patients with python, provide a search function through the LED board using Raspberry Pi GPIO.",
@@ -16,7 +16,7 @@ export const projectss = [
     title: "CarbonMBTI",
     url: undefined,
     git: "https://github.com/TSJK-MBTI/CarbonMBTI",
-    image: "ui/2.png",
+    image: "/public/images/2.png",
     languages: ["JavaScript", "HTML", "CSS"],
     description:
       "Provides information on carbon emissions and improvement measures in the result window by using the mbit test format.",
@@ -25,7 +25,7 @@ export const projectss = [
     title: "Salgu Market",
     url: undefined,
     git: "https://github.com/SalguMarket/SalguMarket",
-    image: "ui/4.PNG",
+    image: "/public/images/4.png",
     languages: ["Spring", "JavaScript", "HTML", "CSS"],
     description:
       "Used food material and waste material trading market project created using the Spring framework.",
@@ -42,7 +42,7 @@ export const projectss = [
     title: "Portfolio",
     url: "https://Mojin2.github.io/Portfolio",
     git: "https://github.com/Mojin2/Portfolio",
-    image: "ui/8.PNG",
+    image: "/public/images/8.png",
     languages: ["React", "R3F", "JavaScript", "HTML", "CSS"],
     description:
       "The old verstion used React, and the new version uses a 3D model through r3f in React and has been imporved to a responsive web. It's old version, and now you viewing is new version.",
@@ -79,7 +79,7 @@ export const ProjectsSlider = ({ projects }) => {
           // Project Details
           <div
             key={index}
-            className={`bg-[url('ui/board.png')] bg-cover relative px-4 py-5  w-[350px] h-[500px] flex justify-center items-center text-slate-900 text-4xl transition-all duration-150  rounded-lg shadow-lg ${
+            className={`bg-[url('/public/images/board.png')] bg-cover relative px-4 py-5  w-[350px] h-[500px] flex justify-center items-center text-slate-900 text-4xl transition-all duration-150  rounded-lg shadow-lg ${
               index === currentIndex ? "" : "opacity-65 scale-90"
             }`}
           >
@@ -213,7 +213,7 @@ export const ProjectsSlider = ({ projects }) => {
               <div className="w-full h-[65px] flex flex-row gap-3 p-2">
                 <div
                   onClick={() => window.open(project.git, "_blank")}
-                  className="cursor-pointer bg-[url('/brownbutton.png')] bg-cover bg-no-repeat h-full w-[250px] rounded-lg font-PixelThick text-xl flex items-center justify-center text-[#36242b]"
+                  className="cursor-pointer bg-[url('/public/images/brownbutton.png')] bg-cover bg-no-repeat h-full w-[250px] rounded-lg font-PixelThick text-xl flex items-center justify-center text-[#36242b]"
                 >
                   git
                 </div>
@@ -225,7 +225,7 @@ export const ProjectsSlider = ({ projects }) => {
                       window.open(project.url, "_blank");
                     }
                   }}
-                  className="cursor-pointer bg-[url('/brownbutton.png')] bg-cover bg-no-repeat h-full w-[250px] rounded-lg font-PixelThick text-xl flex items-center justify-center text-[#36242b]"
+                  className="cursor-pointer bg-[url('/public/images/brownbutton.png')] bg-cover bg-no-repeat h-full w-[250px] rounded-lg font-PixelThick text-xl flex items-center justify-center text-[#36242b]"
                 >
                   Live View
                 </div>

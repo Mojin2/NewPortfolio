@@ -3,15 +3,16 @@ import { Canvas } from "@react-three/fiber";
 import { MotionConfig } from "framer-motion";
 import { Leva } from "leva";
 import { useEffect, useState } from "react";
-import { Cursor } from "./components/Cursor";
 import { Experience } from "./components/Experience";
 import { Interface } from "./components/Interface";
+import { LoadingScreen } from "./components/LoadingScreen";
 import { Menu } from "./components/Menu";
 import { ScrollManager } from "./components/ScrollManager";
 import { framerMotionConfig } from "./config";
 
 function App() {
   const [section, setSection] = useState(0);
+  const [started, setStarted] = useState(false);
   const [menuOpened, setMenuOpened] = useState(false);
   // const backGroundColor = `linear-gradient(#614385,#516395)`;
   // const backGroundColor = `linear-gradient(159deg,#3a98ce 0%, #474da5 50%,#2d44ad 100%)`;
@@ -29,6 +30,7 @@ function App() {
 
   return (
     <>
+      <LoadingScreen started={started} setStarted={setStarted} />
       <MotionConfig
         transition={{
           ...framerMotionConfig,
@@ -51,7 +53,6 @@ function App() {
           setMenuOpened={setMenuOpened}
         />
       </MotionConfig>
-      <Cursor />
       <Leva hidden />
     </>
   );

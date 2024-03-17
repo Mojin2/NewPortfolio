@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { FaComputer, FaInfo } from "react-icons/fa6";
 import { animate, motion, useMotionValue, useTransform } from "framer-motion";
 import { MdInfo } from "react-icons/md";
 import RaderChart from "./RaderChart";
@@ -92,7 +91,7 @@ export const Skills = (props) => {
       <div className="w-[400px] h-[600px] flex"></div>
       {/* Infomation */}
       <motion.div
-        className="relative bg-[url('/paper.png')]  bg-no-repeat bg-contain w-[400px] h-[600px] min-w-[400px]"
+        className="relative bg-[url('/public/images/paper.png')]  bg-no-repeat bg-contain w-[400px] h-[600px] min-w-[400px]"
         style={{
           backgroundSize: "100% 100%",
         }}
@@ -107,8 +106,8 @@ export const Skills = (props) => {
           <div
             className={`${
               page
-                ? "opacity-100 bg-[url('/redlabel.png')]"
-                : "opacity-65 bg-[url('/blacklabel.png')]"
+                ? "opacity-100 bg-[url('/public/images/redlabel.png')]"
+                : "opacity-65 bg-[url('/public/images/blacklabel.png')]"
             } cursor-pointer font-PixelThick bg-contain bg-no-repeat w-[110px] h-[35px] flex items-center justify-center text-slate-50`}
             onClick={() => setPage(true)}
           >
@@ -117,8 +116,8 @@ export const Skills = (props) => {
           <div
             className={`${
               page
-                ? "opacity-65 bg-[url('/blacklabel.png')]"
-                : "opacity-100 bg-[url('/redlabel.png')]"
+                ? "opacity-65 bg-[url('/public/images/blacklabel.png')]"
+                : "opacity-100 bg-[url('/public/images/redlabel.png')]"
             } cursor-pointer font-PixelThick bg-contain bg-no-repeat w-[110px] h-[35px] flex items-center justify-center text-slate-50`}
             onClick={() => setPage(false)}
           >
@@ -142,7 +141,10 @@ export const Skills = (props) => {
                 >
                   <div className="flex flex-row items-center">
                     <div className="px-3">
-                      <img className="w-[15px]" src={"/heart.png"} />
+                      <img
+                        className="w-[15px]"
+                        src={"/public/images/heart.png"}
+                      />
                     </div>
                     <div className="flex flex-row items-center w-full">
                       <div className="h-[15px] w-full bg-slate-100 my-1 rounded-sm shadow-2xl">
@@ -165,7 +167,7 @@ export const Skills = (props) => {
                   </div>
                   <div className="flex flex-row items-center">
                     <div className="px-3">
-                      <img className="w-[15px]" src={"/mp.png"} />
+                      <img className="w-[15px]" src={"/public/images/mp.png"} />
                     </div>
                     <div className="flex flex-row items-center w-full">
                       <div className="h-[15px] w-full bg-slate-100 my-1 rounded-sm shadow-2xl">

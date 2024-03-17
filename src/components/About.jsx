@@ -5,7 +5,7 @@ import { MovingComponent } from "react-moving-text";
 export const About = (props) => {
   const { setSection } = props;
   return (
-    <div className="h-screen w-screen flex flex-col pl-16 items-start justify-start md:justify-center md:pl-32">
+    <div className="h-screen w-screen flex flex-col  items-start pl-[10%] md:justify-center md:pl-32">
       <h1 className="text-[60px] md:text-[80px] font-extrabold text-slate-950 font-PixelThick flex flex-col mt-12 md:mt-0">
         <div>Hi, I'm</div>
         <div>JeenGyu.</div>

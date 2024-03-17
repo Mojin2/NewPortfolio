@@ -1,7 +1,4 @@
 import { motion } from "framer-motion";
-import { atom, useAtom } from "jotai";
-import { PolylineBox } from "./PolylineBox";
-import Slider from "react-slick";
 import { ProjectsSlider } from "./ProjectsSlider";
 import "../styles/slick-theme.css";
 import "../styles/slick.css";
